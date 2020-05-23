@@ -1,0 +1,184 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=renderer content=webkit><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon href=/favicon.ico><title>振興券客服管理系統</title><style>html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+    .chromeframe {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+    }
+
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999999;
+    }
+
+    #loader {
+      display: block;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -webkit-animation: spin 2s linear infinite;
+      -ms-animation: spin 2s linear infinite;
+      -moz-animation: spin 2s linear infinite;
+      -o-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+      z-index: 1001;
+    }
+
+    #loader:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -webkit-animation: spin 3s linear infinite;
+      -moz-animation: spin 3s linear infinite;
+      -o-animation: spin 3s linear infinite;
+      -ms-animation: spin 3s linear infinite;
+      animation: spin 3s linear infinite;
+    }
+
+    #loader:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -moz-animation: spin 1.5s linear infinite;
+      -o-animation: spin 1.5s linear infinite;
+      -ms-animation: spin 1.5s linear infinite;
+      -webkit-animation: spin 1.5s linear infinite;
+      animation: spin 1.5s linear infinite;
+    }
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+
+    #loader-wrapper .loader-section {
+      position: fixed;
+      top: 0;
+      width: 51%;
+      height: 100%;
+      background: #7171C6;
+      z-index: 1000;
+      -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+      transform: translateX(0);
+    }
+
+    #loader-wrapper .loader-section.section-left {
+      left: 0;
+    }
+
+    #loader-wrapper .loader-section.section-right {
+      right: 0;
+    }
+
+
+    .loaded #loader-wrapper .loader-section.section-left {
+      -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+
+    .loaded #loader-wrapper .loader-section.section-right {
+      -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      transform: translateX(100%);
+      -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+
+    .loaded #loader {
+      opacity: 0;
+      -webkit-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+    }
+
+    .loaded #loader-wrapper {
+      visibility: hidden;
+      -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+      transform: translateY(-100%);
+      -webkit-transition: all 0.3s 1s ease-out;
+      transition: all 0.3s 1s ease-out;
+    }
+
+    .no-js #loader-wrapper {
+      display: none;
+    }
+
+    .no-js h1 {
+      color: #222222;
+    }
+
+    #loader-wrapper .load_title {
+      font-family: 'Open Sans';
+      color: #FFF;
+      font-size: 19px;
+      width: 100%;
+      text-align: center;
+      z-index: 9999999999999;
+      position: absolute;
+      top: 60%;
+      opacity: 1;
+      line-height: 30px;
+    }
+
+    #loader-wrapper .load_title span {
+      font-weight: normal;
+      font-style: italic;
+      font-size: 13px;
+      color: #FFF;
+      opacity: 0.5;
+    }</style><link href=/static/css/chunk-libs.45edf705.css rel=stylesheet><link href=/static/css/app.b9f528b5.css rel=stylesheet></head><body><div id=app><div id=loader-wrapper><div id=loader></div><div class="loader-section section-left"></div><div class="loader-section section-right"></div><div class=load_title>正在載入系統資源，請耐心等待</div></div></div><script src=/static/js/chunk-elementUI.f4ba1d89.js></script><script src=/static/js/chunk-libs.2f81b59e.js></script><script>(function(e){function c(c){for(var d,u,a=c[0],h=c[1],r=c[2],k=0,o=[];k<a.length;k++)u=a[k],f[u]&&o.push(f[u][0]),f[u]=0;for(d in h)Object.prototype.hasOwnProperty.call(h,d)&&(e[d]=h[d]);b&&b(c);while(o.length)o.shift()();return t.push.apply(t,r||[]),n()}function n(){for(var e,c=0;c<t.length;c++){for(var n=t[c],d=!0,u=1;u<n.length;u++){var a=n[u];0!==f[a]&&(d=!1)}d&&(t.splice(c--,1),e=h(h.s=n[0]))}return e}var d={},u={runtime:0},f={runtime:0},t=[];function a(e){return h.p+"static/js/"+({}[e]||e)+"."+{"chunk-0429057f":"fe6cb856","chunk-2974eb9e":"a44583e2","chunk-2d0a2db2":"9fe9134c","chunk-2d0a3b04":"afe7be7b","chunk-2d0b68f8":"79d28c67","chunk-2d0bce05":"01a90e88","chunk-2d0c572a":"3bb22eda","chunk-2d0c77ad":"fb0babaa","chunk-2d0c8e18":"63549857","chunk-2d0d0818":"4f57bc93","chunk-2d0d2ec7":"c9fde07f","chunk-2d0d6345":"3e45064f","chunk-b0d57d44":"d2087d1a","chunk-2d0da2ea":"749914c7","chunk-2d0e1c2c":"b4da3cc0","chunk-2d0e2366":"f77b2a65","chunk-08486bce":"5ee44c28","chunk-76b6a568":"765c4c27","chunk-2d0f003d":"273002b1","chunk-2d0f012d":"1788ee56","chunk-2d20f3bf":"3225ddbe","chunk-2d20fe6b":"12a970e3","chunk-2d216779":"755699ed","chunk-2d217c9e":"b94226a0","chunk-2d21a3bb":"36948ab7","chunk-2d22252c":"771adf57","chunk-2d222cdb":"1a843f72","chunk-2d224b14":"77f241d4","chunk-2d22d72b":"0ef2f70e","chunk-2d23031f":"d40530b9","chunk-37097fc2":"9ce44126","chunk-39413ce8":"a23afb10","chunk-3a08d90c":"107656c9","chunk-43677e40":"2c051fa5","chunk-487a66ab":"6b5836d9","chunk-4f291405":"5f53c217","chunk-5082521d":"4798f66d","chunk-582b2a7a":"a180d6c4","chunk-5ef7a71e":"d88d77fe","chunk-94eaa9b4":"dc10abc5","chunk-9e5fc220":"19709857","chunk-3b0424d2":"ee08a256","chunk-4b1e812e":"30458ebe","chunk-712f179b":"b82673ac","chunk-a2efe924":"b322f58c","chunk-ac01c9dc":"f058a834","chunk-cb583cae":"525c980e","chunk-5f889f89":"f7ca25d0","chunk-d19c1a98":"501501ef","chunk-fe069214":"a2b883b4"}[e]+".js"}function h(c){if(d[c])return d[c].exports;var n=d[c]={i:c,l:!1,exports:{}};return e[c].call(n.exports,n,n.exports,h),n.l=!0,n.exports}h.e=function(e){var c=[],n={"chunk-0429057f":1,"chunk-2974eb9e":1,"chunk-b0d57d44":1,"chunk-487a66ab":1,"chunk-9e5fc220":1,"chunk-4b1e812e":1,"chunk-cb583cae":1,"chunk-5f889f89":1,"chunk-fe069214":1};u[e]?c.push(u[e]):0!==u[e]&&n[e]&&c.push(u[e]=new Promise((function(c,n){for(var d="static/css/"+({}[e]||e)+"."+{"chunk-0429057f":"6c6445ca","chunk-2974eb9e":"6afc89e6","chunk-2d0a2db2":"31d6cfe0","chunk-2d0a3b04":"31d6cfe0","chunk-2d0b68f8":"31d6cfe0","chunk-2d0bce05":"31d6cfe0","chunk-2d0c572a":"31d6cfe0","chunk-2d0c77ad":"31d6cfe0","chunk-2d0c8e18":"31d6cfe0","chunk-2d0d0818":"31d6cfe0","chunk-2d0d2ec7":"31d6cfe0","chunk-2d0d6345":"31d6cfe0","chunk-b0d57d44":"300cf69f","chunk-2d0da2ea":"31d6cfe0","chunk-2d0e1c2c":"31d6cfe0","chunk-2d0e2366":"31d6cfe0","chunk-08486bce":"31d6cfe0","chunk-76b6a568":"31d6cfe0","chunk-2d0f003d":"31d6cfe0","chunk-2d0f012d":"31d6cfe0","chunk-2d20f3bf":"31d6cfe0","chunk-2d20fe6b":"31d6cfe0","chunk-2d216779":"31d6cfe0","chunk-2d217c9e":"31d6cfe0","chunk-2d21a3bb":"31d6cfe0","chunk-2d22252c":"31d6cfe0","chunk-2d222cdb":"31d6cfe0","chunk-2d224b14":"31d6cfe0","chunk-2d22d72b":"31d6cfe0","chunk-2d23031f":"31d6cfe0","chunk-37097fc2":"31d6cfe0","chunk-39413ce8":"31d6cfe0","chunk-3a08d90c":"31d6cfe0","chunk-43677e40":"31d6cfe0","chunk-487a66ab":"96cffcd1","chunk-4f291405":"31d6cfe0","chunk-5082521d":"31d6cfe0","chunk-582b2a7a":"31d6cfe0","chunk-5ef7a71e":"31d6cfe0","chunk-94eaa9b4":"31d6cfe0","chunk-9e5fc220":"2c552267","chunk-3b0424d2":"31d6cfe0","chunk-4b1e812e":"75e5cd8a","chunk-712f179b":"31d6cfe0","chunk-a2efe924":"31d6cfe0","chunk-ac01c9dc":"31d6cfe0","chunk-cb583cae":"9da96fdd","chunk-5f889f89":"cbe9d411","chunk-d19c1a98":"31d6cfe0","chunk-fe069214":"a3760cd9"}[e]+".css",f=h.p+d,t=document.getElementsByTagName("link"),a=0;a<t.length;a++){var r=t[a],k=r.getAttribute("data-href")||r.getAttribute("href");if("stylesheet"===r.rel&&(k===d||k===f))return c()}var o=document.getElementsByTagName("style");for(a=0;a<o.length;a++){r=o[a],k=r.getAttribute("data-href");if(k===d||k===f)return c()}var b=document.createElement("link");b.rel="stylesheet",b.type="text/css",b.onload=c,b.onerror=function(c){var d=c&&c.target&&c.target.src||f,t=new Error("Loading CSS chunk "+e+" failed.\n("+d+")");t.request=d,delete u[e],b.parentNode.removeChild(b),n(t)},b.href=f;var i=document.getElementsByTagName("head")[0];i.appendChild(b)})).then((function(){u[e]=0})));var d=f[e];if(0!==d)if(d)c.push(d[2]);else{var t=new Promise((function(c,n){d=f[e]=[c,n]}));c.push(d[2]=t);var r,k=document.createElement("script");k.charset="utf-8",k.timeout=120,h.nc&&k.setAttribute("nonce",h.nc),k.src=a(e),r=function(c){k.onerror=k.onload=null,clearTimeout(o);var n=f[e];if(0!==n){if(n){var d=c&&("load"===c.type?"missing":c.type),u=c&&c.target&&c.target.src,t=new Error("Loading chunk "+e+" failed.\n("+d+": "+u+")");t.type=d,t.request=u,n[1](t)}f[e]=void 0}};var o=setTimeout((function(){r({type:"timeout",target:k})}),12e4);k.onerror=k.onload=r,document.head.appendChild(k)}return Promise.all(c)},h.m=e,h.c=d,h.d=function(e,c,n){h.o(e,c)||Object.defineProperty(e,c,{enumerable:!0,get:n})},h.r=function(e){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},h.t=function(e,c){if(1&c&&(e=h(e)),8&c)return e;if(4&c&&"object"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(h.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&c&&"string"!=typeof e)for(var d in e)h.d(n,d,function(c){return e[c]}.bind(null,d));return n},h.n=function(e){var c=e&&e.__esModule?function(){return e["default"]}:function(){return e};return h.d(c,"a",c),c},h.o=function(e,c){return Object.prototype.hasOwnProperty.call(e,c)},h.p="/",h.oe=function(e){throw console.error(e),e};var r=window["webpackJsonp"]=window["webpackJsonp"]||[],k=r.push.bind(r);r.push=c,r=r.slice();for(var o=0;o<r.length;o++)c(r[o]);var b=k;n()})([]);</script><script src=/static/js/app.1182d71f.js></script></body></html>
